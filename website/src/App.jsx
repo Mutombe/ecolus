@@ -6,7 +6,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/layout/ScrollToTop';
-import CookieConsent from './components/layout/CookieConsent';
+
 import FloatingWhatsApp from './components/ui/FloatingWhatsApp';
 import BackToTop from './components/ui/BackToTop';
 
@@ -56,7 +56,7 @@ export default function App() {
               </Suspense>
             </main>
             <Footer />
-            <CookieConsent />
+
             <FloatingWhatsApp />
             <BackToTop />
           </div>
