@@ -231,7 +231,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
             {/* Mission */}
             <AnimatedSection variant="fadeLeft">
-              <div className="group relative rounded-3xl overflow-hidden h-full min-h-[320px]">
+              <div className="group relative rounded-3xl overflow-hidden h-full min-h-[320px] dark-section">
                 <img
                   src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80"
                   alt=""
@@ -256,7 +256,7 @@ export default function About() {
 
             {/* Vision */}
             <AnimatedSection variant="fadeRight" delay={0.2}>
-              <div className="group relative rounded-3xl overflow-hidden h-full min-h-[320px]">
+              <div className="group relative rounded-3xl overflow-hidden h-full min-h-[320px] dark-section">
                 <img
                   src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80"
                   alt=""
@@ -283,7 +283,7 @@ export default function About() {
       </section>
 
       {/* ═══════════════════ CORE VALUES: Nature backdrop ═══════════════════ */}
-      <section className="relative py-24 sm:py-32 overflow-hidden">
+      <section className="relative py-24 sm:py-32 overflow-hidden dark-section">
         {/* Full-bleed nature image (Harvest-inspired) */}
         <div className="absolute inset-0">
           <img
@@ -454,7 +454,7 @@ export default function About() {
             {team.map((t, i) => (
               <StaggerItem key={i}>
                 <div className="group rounded-3xl overflow-hidden glass hover:glass-green transition-all duration-300">
-                  <div className="aspect-[4/3] relative overflow-hidden">
+                  <div className="aspect-[4/3] relative overflow-hidden dark-section">
                     <img
                       src={t.image}
                       alt={t.name}

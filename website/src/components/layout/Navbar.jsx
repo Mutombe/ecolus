@@ -2,8 +2,9 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Search, ChevronRight, Phone, MapPin, Leaf } from 'lucide-react';
-import { FaXTwitter } from "react-icons/fa6";
+import { Menu, X, Search, ChevronRight, Phone, MapPin, Leaf, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../../contexts/ThemeContext';
+
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
@@ -77,7 +78,7 @@ function SearchModal({ isOpen, onClose }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-md z-[100]"
+            className="fixed inset-0 bg-black/80 backdrop-blur-md z-[100] dark-section"
             onClick={onClose}
           />
           <motion.div
@@ -87,7 +88,7 @@ function SearchModal({ isOpen, onClose }) {
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="fixed top-[10%] left-1/2 -translate-x-1/2 w-[90%] max-w-2xl z-[101]"
           >
-            <div className="glass rounded-2xl overflow-hidden shadow-2xl">
+            <div className="glass rounded-2xl overflow-hidden shadow-2xl dark-section">
               <div className="flex items-center gap-3 px-6 py-5 border-b border-white/5">
                 <Search className="w-5 h-5 text-ecolus-400" />
                 <input
@@ -155,12 +156,25 @@ function SearchModal({ isOpen, onClose }) {
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMac, setIsMac] = useState(false);
   const location = useLocation();
+  const { isDark, toggleTheme } = useTheme();
+
+  // Detect platform for keyboard shortcut display
+  useEffect(() => {
+    const platform = navigator.platform || navigator.userAgent || '';
+    setIsMac(/Mac|iPhone|iPod|iPad/i.test(platform));
+  }, []);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(docHeight > 0 ? window.scrollY / docHeight : 0);
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -182,24 +196,32 @@ export default function Navbar() {
     return () => window.removeEventListener('keydown', handleKey);
   }, []);
 
+  // Determine logo based on theme
+  const logoSrc = isDark ? '/logo-dark.png' : '/logo-light.png';
+
+  // Determine navbar background based on theme and scroll state
+  const navbarBg = isScrolled
+    ? isDark
+      ? 'bg-obsidian/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20'
+      : 'bg-white/80 backdrop-blur-xl border-b border-black/5 shadow-sm'
+    : !isDark
+      ? 'bg-white/40 backdrop-blur-sm'
+      : 'bg-transparent';
+
   return (
     <>
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ type: 'spring', damping: 20, stiffness: 100 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? 'bg-obsidian/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20'
-            : 'bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navbarBg}`}
       >
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group">
               <img
-                src="/logo-dark.png"
+                src={logoSrc}
                 alt="Ecolus Energy"
                 loading='eager'
                 className="h-15 w-auto object-contain group-hover:opacity-80 transition-opacity"
@@ -238,8 +260,16 @@ export default function Navbar() {
               >
                 <Search className="w-4 h-4 text-white/50 group-hover:text-ecolus-400 transition-colors" />
                 <span className="hidden sm:inline text-xs text-white/30 font-[family-name:var(--font-mono)]">
-                  ⌘K
+                  {isMac ? '\u2318K' : 'Ctrl+K'}
                 </span>
+              </button>
+
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-xl glass hover:bg-white/5 transition-all"
+                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {isDark ? <Sun className="w-4 h-4 text-white/50 hover:text-ecolus-400" /> : <Moon className="w-4 h-4 text-amber-500" />}
               </button>
 
               <Link
@@ -268,7 +298,7 @@ export default function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden bg-obsidian/95 backdrop-blur-xl border-t border-white/5 overflow-hidden"
+              className="lg:hidden bg-obsidian/95 backdrop-blur-xl border-t border-white/5 overflow-hidden dark-section"
             >
               <div className="max-w-[1400px] mx-auto px-4 py-6 space-y-1">
                 {navLinks.map((link, i) => (
@@ -308,6 +338,11 @@ export default function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Scroll Progress Bar */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <div className="scroll-progress-bar" style={{ transform: `scaleX(${scrollProgress})` }} />
+        </div>
       </motion.header>
 
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />

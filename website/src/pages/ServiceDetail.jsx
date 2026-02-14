@@ -231,7 +231,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* ═══════════════ BENEFITS: Bento grid ═══════════════ */}
-      <section className="relative py-24 sm:py-32 overflow-hidden">
+      <section className="relative py-24 sm:py-32 overflow-hidden dark-section">
         {/* Nature backdrop */}
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80" alt="" className="w-full h-full object-cover" loading="lazy" />

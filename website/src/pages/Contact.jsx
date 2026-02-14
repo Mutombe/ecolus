@@ -9,6 +9,7 @@ import {
 import AnimatedSection, { StaggerContainer, StaggerItem } from '../components/ui/AnimatedSection';
 import SEOHead from '../components/layout/SEOHead';
 import { seoConfig, companyInfo } from '../utils/seoConfig';
+import { useTheme } from '../contexts/ThemeContext';
 
 const contactMethods = [
   {
@@ -51,6 +52,7 @@ const serviceOptions = [
 ];
 
 export default function Contact() {
+  const { isDark } = useTheme();
   const [formData, setFormData] = useState({
     name: '', email: '', phone: '', service: '', message: '',
   });
@@ -275,7 +277,7 @@ export default function Contact() {
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.5!2d31.05!3d-17.83!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDQ5JzQ4LjAiUyAzMcKwMDMnMDAuMCJF!5e0!3m2!1sen!2szw!4v1"
                   width="100%"
                   height="100%"
-                  style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(0.9) contrast(0.9)' }}
+                  style={{ border: 0, filter: isDark ? 'invert(90%) hue-rotate(180deg) brightness(0.9) contrast(0.9)' : 'none' }}
                   allowFullScreen=""
                   loading="lazy"
                   title="Ecolus Energy Location"

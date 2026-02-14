@@ -10,6 +10,18 @@ import {
 import AnimatedSection, { StaggerContainer, StaggerItem } from '../components/ui/AnimatedSection';
 import SEOHead from '../components/layout/SEOHead';
 import { seoConfig, companyInfo } from '../utils/seoConfig';
+import { useCountUp } from '../hooks/useCountUp';
+
+/* ───────────────────────── ANIMATED STAT ───────────────────────── */
+function AnimatedStat({ end, suffix = '', label }) {
+  const { count, ref } = useCountUp(end, { duration: 2000, suffix });
+  return (
+    <div ref={ref} className="text-center">
+      <p className="text-white font-bold text-lg font-[family-name:var(--font-display)]">{count}{suffix}</p>
+      <p className="text-white/30 text-[10px] tracking-wider uppercase font-[family-name:var(--font-mono)]">{label}</p>
+    </div>
+  );
+}
 
 /* ───────────────────────── HERO ───────────────────────── */
 function HeroSection() {
@@ -232,16 +244,9 @@ function HeroSection() {
               transition={{ delay: 0.8 }}
               className="flex items-center gap-6 mt-10 pt-6 border-t border-white/10"
             >
-              {[
-                { val: '500+', label: 'Projects' },
-                { val: '1200+', label: 'Clients' },
-                { val: '8+', label: 'Years' },
-              ].map((stat, i) => (
-                <div key={i} className="text-center">
-                  <p className="text-white font-bold text-lg font-[family-name:var(--font-display)]">{stat.val}</p>
-                  <p className="text-white/30 text-[10px] tracking-wider uppercase font-[family-name:var(--font-mono)]">{stat.label}</p>
-                </div>
-              ))}
+              <AnimatedStat end={500} suffix="+" label="Projects" />
+              <AnimatedStat end={1200} suffix="+" label="Clients" />
+              <AnimatedStat end={8} suffix="+" label="Years" />
             </motion.div>
           </div>
 
@@ -400,7 +405,7 @@ function ServicesSection() {
             <AnimatedSection key={i} delay={i * 0.15} variant="fadeUp">
               <Link
                 to={service.link}
-                className="group block relative rounded-3xl overflow-hidden h-[480px] sm:h-[540px]"
+                className="group block relative rounded-3xl overflow-hidden h-[480px] sm:h-[540px] dark-section"
               >
                 {/* Image with green tint overlay */}
                 <img
@@ -475,7 +480,7 @@ function BenefitsSection() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left - Nature-blended image composition */}
           <AnimatedSection variant="fadeLeft" className="relative hidden lg:block">
-            <div className="relative">
+            <div className="relative dark-section">
               {/* Main image with green overlay blend */}
               <div className="rounded-3xl overflow-hidden aspect-[4/5]">
                 <img
@@ -787,7 +792,7 @@ function PartnersSection() {
 /* ───────────────────────── GREEN CTA ───────────────────────── */
 function CTASection() {
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden">
+    <section className="relative py-24 sm:py-32 overflow-hidden dark-section">
       {/* Full bleed nature background */}
       <div className="absolute inset-0">
         <img
@@ -903,6 +908,7 @@ export default function Home() {
       <ProcessSection />
       <TestimonialsSection />
       <PartnersSection />
+      <CTASection />
     </>
   );
 }

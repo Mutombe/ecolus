@@ -159,13 +159,38 @@ export default function Services() {
         </div>
       </section>
 
+      {/* ═══════════════ STICKY SERVICE NAV ═══════════════ */}
+      <nav className="sticky top-20 z-40 glass border-y border-white/5 backdrop-blur-xl">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center gap-2 py-3 overflow-x-auto scrollbar-hide">
+            {servicesData.map((s) => (
+              <a
+                key={s.slug}
+                href={`#${s.slug}`}
+                className="group flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-white/50 hover:text-white hover:bg-white/5 transition-all whitespace-nowrap"
+              >
+                <s.icon className="w-4 h-4 text-ecolus-400 group-hover:text-lime-accent transition-colors" />
+                {s.shortTitle}
+              </a>
+            ))}
+            <div className="h-6 w-px bg-white/10 mx-2" />
+            <a
+              href="#process"
+              className="px-4 py-2 rounded-xl text-sm font-medium text-white/50 hover:text-white hover:bg-white/5 transition-all whitespace-nowrap"
+            >
+              Our Process
+            </a>
+          </div>
+        </div>
+      </nav>
+
       {/* ═══════════════ SERVICE SECTIONS ═══════════════ */}
       {servicesData.map((service, idx) => (
         <ServiceBlock key={service.slug} service={service} index={idx} />
       ))}
 
       {/* ═══════════════ PROCESS: How we work ═══════════════ */}
-      <section className="relative py-24 sm:py-32 overflow-hidden">
+      <section id="process" className="relative py-24 sm:py-32 overflow-hidden dark-section">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1600&q=80" alt="" className="w-full h-full object-cover" loading="lazy" />
           <div className="absolute inset-0 bg-obsidian/88" />
@@ -308,7 +333,7 @@ function ServiceBlock({ service, index }) {
         <div className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${!isEven ? 'lg:[direction:rtl]' : ''}`}>
           {/* Image side */}
           <AnimatedSection variant={isEven ? 'fadeLeft' : 'fadeRight'} className={`relative ${!isEven ? 'lg:[direction:ltr]' : ''}`}>
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] group">
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] group dark-section">
               <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
               {/* Green ecosystem overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian/60 via-transparent to-ecolus-900/20" />

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaXTwitter } from "react-icons/fa6";
-import { Leaf, Phone, Mail, MapPin, ArrowUpRight, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
+import { Phone, Mail, MapPin, ArrowUpRight, Instagram, Facebook, Linkedin } from 'lucide-react';
 
 const footerLinks = {
   Company: [
@@ -37,7 +37,7 @@ const socialLinks = [
 
 export default function Footer({ onOpenPolicy, onOpenPrivacy }) {
   return (
-    <footer className="relative mt-32">
+    <footer className="relative mt-32 dark-section">
       {/* CTA Banner above footer */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 -mb-24 relative z-10">
         <motion.div
@@ -55,7 +55,7 @@ export default function Footer({ onOpenPolicy, onOpenPrivacy }) {
                 Ready to Go Solar?
               </h3>
               <p className="text-white/70 max-w-lg text-sm sm:text-base">
-                Get a free consultation and custom solar design for your property. 
+                Get a free consultation and custom solar design for your property.
                 Start saving on electricity costs today.
               </p>
             </div>
@@ -81,7 +81,7 @@ export default function Footer({ onOpenPolicy, onOpenPrivacy }) {
       {/* Main Footer */}
       <div className="bg-obsidian border-t border-white/5 pt-36 pb-8">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-8">
             {/* Brand Column */}
             <div className="lg:col-span-2">
               <Link to="/" className="flex items-center gap-2 mb-6">
@@ -92,7 +92,7 @@ export default function Footer({ onOpenPolicy, onOpenPrivacy }) {
                 />
               </Link>
               <p className="text-white/50 text-sm leading-relaxed mb-6 max-w-sm">
-                Zimbabwe's premier solar energy company delivering world-class installations, 
+                Zimbabwe's premier solar energy company delivering world-class installations,
                 solar geysers, and water pump solutions for residential and commercial properties.
               </p>
               <div className="space-y-3 mb-6">
@@ -145,6 +145,27 @@ export default function Footer({ onOpenPolicy, onOpenPrivacy }) {
               </div>
             ))}
           </div>
+
+          {/* Newsletter */}
+          <div className="lg:col-span-5 mt-8 lg:mt-0">
+            <div className="rounded-2xl glass-green p-6">
+              <h3 className="font-[family-name:var(--font-display)] font-semibold text-white text-sm mb-2">Stay Updated</h3>
+              <p className="text-white/40 text-xs mb-4">Get solar tips, promotions, and industry news delivered to your inbox.</p>
+              <form onSubmit={(e) => { e.preventDefault(); /* future integration */ }} className="flex gap-2">
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  required
+                  className="flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/20 text-sm focus:outline-none focus:border-ecolus-500 focus:ring-1 focus:ring-ecolus-500 transition-all"
+                />
+                <button type="submit" className="px-5 py-2.5 bg-ecolus-500 hover:bg-ecolus-400 rounded-xl text-white text-sm font-semibold transition-all flex-shrink-0">
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div className="mb-8" />
 
           {/* Bottom Bar */}
           <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">

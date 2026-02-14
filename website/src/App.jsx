@@ -2,10 +2,13 @@ import React from 'react';
 import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/layout/ScrollToTop';
 import CookieConsent from './components/layout/CookieConsent';
+import FloatingWhatsApp from './components/ui/FloatingWhatsApp';
+import BackToTop from './components/ui/BackToTop';
 
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -29,29 +32,36 @@ function PageLoader() {
 
 export default function App() {
   return (
-    <HelmetProvider>
-      <Router>
-        <ScrollToTop />
-        <div className="min-h-screen bg-obsidian text-white">
-          <Navbar />
-          <main>
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-               <Route path="/services" element={<Services />} />
-                <Route path="/services/:slug" element={<ServiceDetail />} />
-                <Route path="/shop" element={<Shop />} />
-                <Route path="/careers" element={<Careers />} />
-                <Route path="/gallery" element={<Gallery />} />
-                <Route path="/contact" element={<Contact />} />
-              </Routes>
-            </Suspense>
-          </main>
-          <Footer />
-          <CookieConsent />
-        </div>
-      </Router>
-    </HelmetProvider>
+    <ThemeProvider>
+      <HelmetProvider>
+        <Router>
+          <ScrollToTop />
+          <a href="#main-content" className="skip-to-content">
+            Skip to main content
+          </a>
+          <div className="min-h-screen bg-obsidian text-white">
+            <Navbar />
+            <main id="main-content">
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/services" element={<Services />} />
+                  <Route path="/services/:slug" element={<ServiceDetail />} />
+                  <Route path="/shop" element={<Shop />} />
+                  <Route path="/careers" element={<Careers />} />
+                  <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/contact" element={<Contact />} />
+                </Routes>
+              </Suspense>
+            </main>
+            <Footer />
+            <CookieConsent />
+            <FloatingWhatsApp />
+            <BackToTop />
+          </div>
+        </Router>
+      </HelmetProvider>
+    </ThemeProvider>
   );
 }

@@ -152,7 +152,7 @@ function ProductModal({ product, onClose }) {
       onClick={onClose}
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-obsidian/80 backdrop-blur-md" />
+      <div className="absolute inset-0 bg-obsidian/80 backdrop-blur-md dark-section" />
 
       {/* Modal */}
       <motion.div
@@ -161,7 +161,7 @@ function ProductModal({ product, onClose }) {
         exit={{ opacity: 0, y: 20, scale: 0.98 }}
         transition={{ type: 'spring', damping: 25, stiffness: 300 }}
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl glass border border-white/10 shadow-2xl shadow-ecolus-500/5"
+        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl glass border border-white/10 shadow-2xl shadow-ecolus-500/5 dark-section"
       >
         {/* Close button */}
         <button
@@ -172,7 +172,7 @@ function ProductModal({ product, onClose }) {
         </button>
 
         {/* Image section */}
-        <div className="relative h-56 sm:h-72 overflow-hidden rounded-t-3xl">
+        <div className="relative h-56 sm:h-72 overflow-hidden rounded-t-3xl dark-section">
           <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-br from-ecolus-900/20 via-transparent to-lime-accent/5" />
@@ -417,7 +417,7 @@ function ProductCard({ product, index, onOpenModal }) {
       )}
 
       {/* Image */}
-      <div className="relative h-52 overflow-hidden">
+      <div className="relative h-52 overflow-hidden dark-section">
         <img
           src={product.image}
           alt={product.name}
@@ -644,7 +644,7 @@ function BrandsSection() {
 /* ══════════════════════════════ CTA ══════════════════════════════ */
 function ConsultationCTA() {
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden">
+    <section className="relative py-24 sm:py-32 overflow-hidden dark-section">
       <div className="absolute inset-0">
         <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80" alt="" className="w-full h-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-obsidian/85" />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, X, ChevronLeft, ChevronRight, Filter, Sun, Droplets, Thermometer } from 'lucide-react';
 import AnimatedSection, { StaggerContainer, StaggerItem } from '../components/ui/AnimatedSection';
@@ -68,9 +68,21 @@ export default function Gallery() {
   const filtered = activeFilter === 'all' ? projects : projects.filter(p => p.category === activeFilter);
 
   const openLightbox = (index) => setLightbox(index);
-  const closeLightbox = () => setLightbox(null);
-  const nextImage = () => setLightbox((prev) => (prev + 1) % filtered.length);
-  const prevImage = () => setLightbox((prev) => (prev - 1 + filtered.length) % filtered.length);
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+  const nextImage = useCallback(() => setLightbox((prev) => (prev + 1) % filtered.length), [filtered.length]);
+  const prevImage = useCallback(() => setLightbox((prev) => (prev - 1 + filtered.length) % filtered.length), [filtered.length]);
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    if (lightbox === null) return;
+    const handleKey = (e) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [lightbox, closeLightbox, nextImage, prevImage]);
 
   return (
     <>
@@ -156,7 +168,7 @@ export default function Gallery() {
                   onClick={() => openLightbox(index)}
                   className="group cursor-pointer rounded-2xl overflow-hidden glass hover:glow-green transition-all"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  <div className="relative aspect-[4/3] overflow-hidden dark-section">
                     <img
                       src={project.image}
                       alt={project.title}
@@ -188,7 +200,7 @@ export default function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-obsidian/95 backdrop-blur-xl flex items-center justify-center p-4"
+            className="fixed inset-0 z-[100] bg-obsidian/95 backdrop-blur-xl flex items-center justify-center p-4 dark-section"
             onClick={closeLightbox}
           >
             <button onClick={closeLightbox} className="absolute top-6 right-6 text-white/50 hover:text-white z-10">

@@ -127,7 +127,7 @@ function CareersHero() {
                   Energy Future
                 </span>
               </h1>
-              <p className="text-lg text-gray-400 max-w-xl leading-relaxed mb-8">
+              <p className="text-lg text-white/50 max-w-xl leading-relaxed mb-8">
                 Join Zimbabwe's leading solar energy company and be part of a mission that powers
                 homes, businesses, and a sustainable tomorrow.
               </p>
@@ -157,7 +157,7 @@ function CareersHero() {
                 </div>
                 <div>
                   <div className="text-3xl font-display font-bold text-white">{stat.number}</div>
-                  <div className="text-sm text-gray-400">{stat.label}</div>
+                  <div className="text-sm text-white/50">{stat.label}</div>
                 </div>
               </motion.div>
             ))}
@@ -197,7 +197,7 @@ function CultureSection() {
               >
                 <Star className="w-6 h-6 text-yellow-400 mb-2" />
                 <div className="text-white font-semibold text-sm">Great Place to Work</div>
-                <div className="text-gray-400 text-xs mt-1">Rated by our team</div>
+                <div className="text-white/50 text-xs mt-1">Rated by our team</div>
               </motion.div>
             </div>
           </AnimatedSection>
@@ -209,7 +209,7 @@ function CultureSection() {
               <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-6">
                 Where <span className="text-ecolus-400">Passion</span> Meets Purpose
               </h2>
-              <p className="text-gray-400 leading-relaxed mb-10">
+              <p className="text-white/50 leading-relaxed mb-10">
                 At Ecolus Energy, we don't just install solar panels — we're building a cleaner,
                 more sustainable Zimbabwe. Our culture reflects our commitment to excellence,
                 innovation, and community.
@@ -225,7 +225,7 @@ function CultureSection() {
                     </div>
                     <div>
                       <h3 className="text-white font-semibold mb-1">{value.title}</h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">{value.desc}</p>
+                      <p className="text-white/50 text-sm leading-relaxed">{value.desc}</p>
                     </div>
                   </div>
                 </StaggerItem>
@@ -258,7 +258,7 @@ function PerksSection() {
                   <perk.icon className="w-7 h-7 text-ecolus-400" />
                 </div>
                 <h3 className="text-white font-semibold mb-1">{perk.title}</h3>
-                <p className="text-gray-400 text-sm">{perk.desc}</p>
+                <p className="text-white/50 text-sm">{perk.desc}</p>
               </div>
             </StaggerItem>
           ))}
@@ -287,11 +287,11 @@ function JobCard({ job }) {
         <div className="flex-1">
           <div className="flex flex-wrap items-center gap-2 mb-2">
             <span className="text-xs px-2.5 py-1 rounded-full bg-ecolus-500/10 text-ecolus-300 font-medium">{job.type}</span>
-            <span className="text-xs px-2.5 py-1 rounded-full bg-white/5 text-gray-400">{job.experience}</span>
-            <span className="text-xs text-gray-500">{job.posted}</span>
+            <span className="text-xs px-2.5 py-1 rounded-full bg-white/5 text-white/50">{job.experience}</span>
+            <span className="text-xs text-white/35">{job.posted}</span>
           </div>
           <h3 className="text-lg font-semibold text-white mb-1">{job.title}</h3>
-          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
+          <div className="flex flex-wrap items-center gap-4 text-sm text-white/50">
             <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5" /> {job.location}</span>
             <span className="flex items-center gap-1"><Briefcase className="w-3.5 h-3.5" /> {departments.find(d => d.id === job.department)?.name}</span>
           </div>
@@ -305,7 +305,7 @@ function JobCard({ job }) {
             Apply <ArrowUpRight className="w-4 h-4" />
           </Link>
           <motion.div animate={{ rotate: expanded ? 180 : 0 }}>
-            <ChevronDown className="w-5 h-5 text-gray-400" />
+            <ChevronDown className="w-5 h-5 text-white/50" />
           </motion.div>
         </div>
       </div>
@@ -320,11 +320,11 @@ function JobCard({ job }) {
             className="overflow-hidden"
           >
             <div className="px-6 pb-6 pt-2 border-t border-white/5">
-              <p className="text-gray-400 text-sm mb-4 leading-relaxed">{job.description}</p>
+              <p className="text-white/50 text-sm mb-4 leading-relaxed">{job.description}</p>
               <h4 className="text-white font-medium text-sm mb-2">Requirements</h4>
               <div className="space-y-1.5">
                 {job.requirements.map((req) => (
-                  <div key={req} className="flex items-start gap-2 text-sm text-gray-400">
+                  <div key={req} className="flex items-start gap-2 text-sm text-white/50">
                     <ChevronRight className="w-4 h-4 text-ecolus-400 shrink-0 mt-0.5" />
                     {req}
                   </div>
@@ -354,7 +354,7 @@ function OpeningsSection() {
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
             Find Your <span className="text-ecolus-400">Role</span>
           </h2>
-          <p className="text-gray-400 max-w-lg mx-auto">
+          <p className="text-white/50 max-w-lg mx-auto">
             We're looking for talented individuals to join our mission.
           </p>
         </AnimatedSection>
@@ -368,7 +368,7 @@ function OpeningsSection() {
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
                 activeDept === dept.id
                   ? 'bg-ecolus-500 text-white'
-                  : 'glass text-gray-400 hover:text-white hover:bg-white/5'
+                  : 'glass text-white/50 hover:text-white hover:bg-white/5'
               }`}
             >
               <dept.icon className="w-4 h-4" />
@@ -396,8 +396,8 @@ function OpeningsSection() {
 
         {filtered.length === 0 && (
           <div className="text-center py-16">
-            <Briefcase className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-            <p className="text-gray-400">No openings in this department currently.</p>
+            <Briefcase className="w-12 h-12 text-white/25 mx-auto mb-4" />
+            <p className="text-white/50">No openings in this department currently.</p>
           </div>
         )}
 
@@ -405,7 +405,7 @@ function OpeningsSection() {
         <AnimatedSection variant="fadeUp" className="mt-16 text-center">
           <div className="glass rounded-2xl p-8">
             <h3 className="text-xl font-semibold text-white mb-2">Don't See Your Role?</h3>
-            <p className="text-gray-400 mb-6 max-w-md mx-auto text-sm">
+            <p className="text-white/50 mb-6 max-w-md mx-auto text-sm">
               We're always looking for exceptional talent. Send us your CV and tell us how you can contribute.
             </p>
             <Link
