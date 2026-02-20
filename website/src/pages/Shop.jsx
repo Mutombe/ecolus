@@ -350,7 +350,7 @@ function ShopHero() {
               Browse Products
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
-            <Link to="/contact" className="flex items-center gap-3 px-8 py-4 glass hover:glass-green text-white/80 font-semibold rounded-2xl transition-all text-sm">
+            <Link to="/energy/contact" className="flex items-center gap-3 px-8 py-4 glass hover:glass-green text-white/80 font-semibold rounded-2xl transition-all text-sm">
               Request Custom Quote
             </Link>
           </motion.div>
@@ -665,7 +665,7 @@ function ConsultationCTA() {
             Our solar experts will assess your property and recommend the perfect system tailored to your energy needs and budget.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/contact" className="group flex items-center gap-3 px-8 py-4 bg-ecolus-500 hover:bg-ecolus-400 text-white font-bold rounded-2xl transition-all hover:shadow-xl hover:shadow-ecolus-500/20 text-sm w-full sm:w-auto justify-center">
+            <Link to="/energy/contact" className="group flex items-center gap-3 px-8 py-4 bg-ecolus-500 hover:bg-ecolus-400 text-white font-bold rounded-2xl transition-all hover:shadow-xl hover:shadow-ecolus-500/20 text-sm w-full sm:w-auto justify-center">
               Get Free Consultation
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>

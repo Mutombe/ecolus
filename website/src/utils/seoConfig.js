@@ -1,4 +1,9 @@
 export const seoConfig = {
+  group: {
+    title: 'Ecolus Group | Building Zimbabwe\'s Future',
+    description: 'Ecolus Group is a diversified Zimbabwean conglomerate spanning energy, transport, construction, petroleum, gas, and logistics.',
+    keywords: 'Ecolus Group, Zimbabwe conglomerate, Ecolus Energy, Ecolus Transport, Ecolus Construction, Zimbabwe business',
+  },
   home: {
     title: 'Ecolus Energy | Zimbabwe\'s Premier Solar Energy Solutions',
     description: 'Ecolus Energy provides world-class solar installations, solar geysers, and solar water pumps for residential and commercial properties across Zimbabwe. Energy for the long run.',

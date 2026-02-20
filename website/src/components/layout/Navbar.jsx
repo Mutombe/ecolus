@@ -2,36 +2,30 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Search, ChevronRight, Phone, MapPin, Leaf, Sun, Moon } from 'lucide-react';
+import { Menu, X, Search, ChevronRight, Phone, MapPin, Leaf, Sun, Moon, ArrowLeft } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
-
-const navLinks = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-  { name: 'Services', path: '/services' },
-  { name: 'Shop', path: '/shop' },
-  { name: 'Gallery', path: '/gallery' },
-  { name: 'Careers', path: '/careers' },
-  { name: 'Contact', path: '/contact' },
-];
+import { useCompany } from '../../contexts/CompanyContext';
+import NavDropdown from './NavDropdown';
+import NavMobileItem from './NavMobileItem';
 
 // Searchable content mapping - maps keywords to sections/pages
 const searchableContent = [
-  { keywords: ['solar', 'installation', 'panel', 'rooftop', 'mount'], title: 'Solar Installations', path: '/services', section: 'solar-installations' },
-  { keywords: ['geyser', 'water heating', 'hot water', 'gravity', 'pressure'], title: 'Solar Geysers', path: '/services', section: 'solar-geysers' },
-  { keywords: ['pump', 'water pump', 'borehole', 'irrigation', 'dc', 'ac'], title: 'Solar Water Pumps', path: '/services', section: 'solar-water-pumps' },
-  { keywords: ['about', 'mission', 'vision', 'team', 'company', 'who'], title: 'About Us', path: '/about', section: 'hero' },
-  { keywords: ['contact', 'phone', 'email', 'address', 'quote', 'consultation'], title: 'Contact Us', path: '/contact', section: 'hero' },
-  { keywords: ['shop', 'buy', 'product', 'price', 'inverter', 'battery', 'store'], title: 'Solar Shop', path: '/shop', section: 'hero' },
-  { keywords: ['career', 'job', 'work', 'hiring', 'vacancy', 'apply', 'position'], title: 'Careers', path: '/careers', section: 'hero' },
-  { keywords: ['gallery', 'project', 'portfolio', 'photo', 'image', 'work'], title: 'Project Gallery', path: '/gallery', section: 'hero' },
-  { keywords: ['benefit', 'save', 'cost', 'electricity', 'bill', 'property value'], title: 'Benefits of Solar', path: '/', section: 'benefits' },
-  { keywords: ['residential', 'home', 'house'], title: 'Residential Solar', path: '/services', section: 'solar-installations' },
-  { keywords: ['commercial', 'business', 'office', 'factory', 'industrial'], title: 'Commercial Solar', path: '/services', section: 'solar-installations' },
-  { keywords: ['site visit', 'assessment', 'survey', 'mapping'], title: 'Professional Site Visits', path: '/services', section: 'process' },
-  { keywords: ['warranty', 'guarantee', 'maintenance'], title: 'Warranty & Support', path: '/services', section: 'warranty' },
-  { keywords: ['showroom', 'samora machel', '218'], title: 'Visit Our Showroom', path: '/contact', section: 'map' },
-  { keywords: ['privacy', 'policy', 'cookie', 'terms'], title: 'Privacy & Policies', path: '/contact', section: 'hero' },
+  { keywords: ['solar', 'installation', 'panel', 'rooftop', 'mount'], title: 'Solar Installations', path: '/energy/services', section: 'solar-installations' },
+  { keywords: ['geyser', 'water heating', 'hot water', 'gravity', 'pressure'], title: 'Solar Geysers', path: '/energy/services', section: 'solar-geysers' },
+  { keywords: ['pump', 'water pump', 'borehole', 'irrigation', 'dc', 'ac'], title: 'Solar Water Pumps', path: '/energy/services', section: 'solar-water-pumps' },
+  { keywords: ['about', 'mission', 'vision', 'team', 'company', 'who'], title: 'About Us', path: '/energy/about', section: 'hero' },
+  { keywords: ['contact', 'phone', 'email', 'address', 'quote', 'consultation'], title: 'Contact Us', path: '/energy/contact', section: 'hero' },
+  { keywords: ['shop', 'buy', 'product', 'price', 'inverter', 'battery', 'store'], title: 'Solar Shop', path: '/energy/shop', section: 'hero' },
+  { keywords: ['career', 'job', 'work', 'hiring', 'vacancy', 'apply', 'position'], title: 'Careers', path: '/energy/careers', section: 'hero' },
+  { keywords: ['gallery', 'project', 'portfolio', 'photo', 'image', 'work'], title: 'Project Gallery', path: '/energy/gallery', section: 'hero' },
+  { keywords: ['how', 'works', 'solar energy', 'technology', 'photovoltaic', 'pv', 'learn'], title: 'How Solar Works', path: '/energy/how-it-works', section: 'hero' },
+  { keywords: ['benefit', 'save', 'cost', 'electricity', 'bill', 'property value'], title: 'Benefits of Solar', path: '/energy', section: 'benefits' },
+  { keywords: ['residential', 'home', 'house'], title: 'Residential Solar', path: '/energy/services', section: 'solar-installations' },
+  { keywords: ['commercial', 'business', 'office', 'factory', 'industrial'], title: 'Commercial Solar', path: '/energy/services', section: 'solar-installations' },
+  { keywords: ['site visit', 'assessment', 'survey', 'mapping'], title: 'Professional Site Visits', path: '/energy/services', section: 'process' },
+  { keywords: ['warranty', 'guarantee', 'maintenance'], title: 'Warranty & Support', path: '/energy/services', section: 'warranty' },
+  { keywords: ['showroom', 'samora machel', '218'], title: 'Visit Our Showroom', path: '/energy/contact', section: 'map' },
+  { keywords: ['privacy', 'policy', 'cookie', 'terms'], title: 'Privacy & Policies', path: '/energy/contact', section: 'hero' },
 ];
 
 function SearchModal({ isOpen, onClose }) {
@@ -162,6 +156,7 @@ export default function Navbar() {
   const [isMac, setIsMac] = useState(false);
   const location = useLocation();
   const { isDark, toggleTheme } = useTheme();
+  const { activeCompany, isGroupPage, isSubsidiaryPlaceholder } = useCompany();
 
   // Detect platform for keyboard shortcut display
   useEffect(() => {
@@ -196,8 +191,30 @@ export default function Navbar() {
     return () => window.removeEventListener('keydown', handleKey);
   }, []);
 
-  // Determine logo based on theme
-  const logoSrc = isDark ? '/logo-dark.png' : '/logo-light.png';
+  // Determine logo based on context and theme
+  const isEnergy = activeCompany.id === 'energy';
+  const logoSrc = isEnergy
+    ? (isDark ? activeCompany.logoDark : activeCompany.logoLight)
+    : activeCompany.logo;
+
+  // Dynamic nav links from active company
+  const currentNavLinks = activeCompany.navLinks;
+
+  // Check if current path matches link (exact or startsWith for nested routes)
+  const isActive = (linkPath) => {
+    if (linkPath === '/') return location.pathname === '/';
+    const cleanPath = linkPath.split('#')[0];
+    return location.pathname === cleanPath || location.pathname.startsWith(cleanPath + '/');
+  };
+
+  // Check if any child in a dropdown group is active
+  const isDropdownActive = (item) => {
+    if (item.children) return item.children.some((child) => isActive(child.path));
+    return isActive(item.path);
+  };
+
+  // Show "Get Quote" only for Energy
+  const showGetQuote = isEnergy;
 
   // Determine navbar background based on theme and scroll state
   const navbarBg = isScrolled
@@ -217,52 +234,76 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navbarBg}`}
       >
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 group">
+            <Link to={activeCompany.basePath} className="flex items-center gap-2 group">
               <img
                 src={logoSrc}
-                alt="Ecolus Energy"
+                alt={activeCompany.name}
                 loading='eager'
-                className="h-15 w-auto object-contain group-hover:opacity-80 transition-opacity"
+                className={`h-10 sm:h-15 w-auto object-contain group-hover:opacity-80 transition-opacity ${
+                  isDark ? 'brightness-0 invert' : (!isEnergy ? 'mix-blend-multiply' : '')
+                }`}
+                style={!isEnergy && !isDark ? { filter: 'drop-shadow(0 0 10px rgba(34, 139, 34, 0.2))' } : undefined}
               />
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) => (
+            {currentNavLinks.length > 0 && (
+              <nav className="hidden lg:flex items-center gap-1">
+                {currentNavLinks.map((link) =>
+                  link.children ? (
+                    <NavDropdown key={link.name} item={link} isActive={isDropdownActive(link)} />
+                  ) : (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      className={`relative px-4 py-2 text-sm font-medium transition-colors font-[family-name:var(--font-body)] ${
+                        isActive(link.path)
+                          ? 'text-ecolus-400'
+                          : 'text-white/70 hover:text-white'
+                      }`}
+                    >
+                      {link.name}
+                      {isActive(link.path) && (
+                        <motion.div
+                          layoutId="nav-indicator"
+                          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-ecolus-400"
+                          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                        />
+                      )}
+                    </Link>
+                  )
+                )}
+              </nav>
+            )}
+
+            {/* Placeholder page: show back to group link in nav area */}
+            {isSubsidiaryPlaceholder && (
+              <nav className="hidden lg:flex items-center">
                 <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors font-[family-name:var(--font-body)] ${
-                    location.pathname === link.path
-                      ? 'text-ecolus-400'
-                      : 'text-white/70 hover:text-white'
-                  }`}
+                  to="/"
+                  className="flex items-center gap-2 text-white/50 hover:text-ecolus-400 text-sm font-medium transition-colors"
                 >
-                  {link.name}
-                  {location.pathname === link.path && (
-                    <motion.div
-                      layoutId="nav-indicator"
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-ecolus-400"
-                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                    />
-                  )}
+                  <ArrowLeft className="w-4 h-4" />
+                  Back to Ecolus Group
                 </Link>
-              ))}
-            </nav>
+              </nav>
+            )}
 
             {/* Right Actions */}
             <div className="flex items-center gap-3">
-              <button
-                onClick={() => setIsSearchOpen(true)}
-                className="flex items-center gap-2 px-3 py-2 rounded-xl glass hover:bg-white/5 transition-all group"
-              >
-                <Search className="w-4 h-4 text-white/50 group-hover:text-ecolus-400 transition-colors" />
-                <span className="hidden sm:inline text-xs text-white/30 font-[family-name:var(--font-mono)]">
-                  {isMac ? '\u2318K' : 'Ctrl+K'}
-                </span>
-              </button>
+              {!isSubsidiaryPlaceholder && (
+                <button
+                  onClick={() => setIsSearchOpen(true)}
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl glass hover:bg-white/5 transition-all group"
+                >
+                  <Search className="w-4 h-4 text-white/50 group-hover:text-ecolus-400 transition-colors" />
+                  <span className="hidden sm:inline text-xs text-white/30 font-[family-name:var(--font-mono)]">
+                    {isMac ? '\u2318K' : 'Ctrl+K'}
+                  </span>
+                </button>
+              )}
 
               <button
                 onClick={toggleTheme}
@@ -272,13 +313,15 @@ export default function Navbar() {
                 {isDark ? <Sun className="w-4 h-4 text-white/50 hover:text-ecolus-400" /> : <Moon className="w-4 h-4 text-amber-500" />}
               </button>
 
-              <Link
-                to="/contact"
-                className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-ecolus-500 hover:bg-ecolus-400 text-white text-sm font-semibold transition-all hover:shadow-lg hover:shadow-ecolus-500/25"
-              >
-                <Phone className="w-3.5 h-3.5" />
-                Get Quote
-              </Link>
+              {showGetQuote && (
+                <Link
+                  to="/energy/contact"
+                  className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-ecolus-500 hover:bg-ecolus-400 text-white text-sm font-semibold transition-all hover:shadow-lg hover:shadow-ecolus-500/25"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  Get Quote
+                </Link>
+              )}
 
               <button
                 onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -301,39 +344,50 @@ export default function Navbar() {
               className="lg:hidden bg-obsidian/95 backdrop-blur-xl border-t border-white/5 overflow-hidden dark-section"
             >
               <div className="max-w-[1400px] mx-auto px-4 py-6 space-y-1">
-                {navLinks.map((link, i) => (
-                  <motion.div
-                    key={link.path}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                  >
+                {isSubsidiaryPlaceholder ? (
+                  <>
                     <Link
-                      to={link.path}
-                      className={`flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium transition-all ${
-                        location.pathname === link.path
-                          ? 'bg-ecolus-500/10 text-ecolus-400'
-                          : 'text-white/70 hover:bg-white/5 hover:text-white'
-                      }`}
+                      to="/"
+                      className="flex items-center gap-2 px-4 py-3.5 rounded-xl text-base font-medium text-white/70 hover:bg-white/5 hover:text-white transition-all"
                     >
-                      {link.name}
-                      <ChevronRight className="w-4 h-4 opacity-30" />
+                      <ArrowLeft className="w-4 h-4" />
+                      Back to Ecolus Group
                     </Link>
-                  </motion.div>
-                ))}
-                <div className="pt-4 px-4 flex flex-col gap-3">
-                  <Link
-                    to="/contact"
-                    className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-ecolus-500 text-white font-semibold"
-                  >
-                    <Phone className="w-4 h-4" />
-                    Get a Free Quote
-                  </Link>
-                  <div className="flex items-center gap-2 text-white/40 text-sm">
-                    <MapPin className="w-4 h-4" />
-                    218 Samora Machel Ave, Harare
-                  </div>
-                </div>
+                    <Link
+                      to="/energy"
+                      className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-ecolus-500 text-white font-semibold mt-4"
+                    >
+                      Visit Ecolus Energy
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    {currentNavLinks.map((link, i) => (
+                      <NavMobileItem
+                        key={link.name}
+                        item={link}
+                        isActive={isDropdownActive(link)}
+                        index={i}
+                        onNavigate={() => setIsMobileOpen(false)}
+                      />
+                    ))}
+                    {showGetQuote && (
+                      <div className="pt-4 px-4 flex flex-col gap-3">
+                        <Link
+                          to="/energy/contact"
+                          className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-ecolus-500 text-white font-semibold"
+                        >
+                          <Phone className="w-4 h-4" />
+                          Get a Free Quote
+                        </Link>
+                        <div className="flex items-center gap-2 text-white/40 text-sm">
+                          <MapPin className="w-4 h-4" />
+                          218 Samora Machel Ave, Harare
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )}
               </div>
             </motion.div>
           )}

@@ -298,7 +298,7 @@ function JobCard({ job }) {
         </div>
         <div className="flex items-center gap-3">
           <Link
-            to="/contact"
+            to="/energy/contact"
             onClick={(e) => e.stopPropagation()}
             className="px-5 py-2.5 bg-ecolus-500 hover:bg-ecolus-400 text-white rounded-xl text-sm font-semibold transition-all flex items-center gap-2"
           >
@@ -409,7 +409,7 @@ function OpeningsSection() {
               We're always looking for exceptional talent. Send us your CV and tell us how you can contribute.
             </p>
             <Link
-              to="/contact"
+              to="/energy/contact"
               className="inline-flex items-center gap-2 px-6 py-3 glass hover:bg-white/5 text-white rounded-xl font-medium transition-all"
             >
               Submit Speculative Application <ArrowRight className="w-4 h-4" />

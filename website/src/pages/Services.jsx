@@ -239,7 +239,7 @@ export default function Services() {
       </section>
 
       {/* ═══════════════ WARRANTY ═══════════════ */}
-      <section className="relative py-24 sm:py-32 overflow-hidden">
+      <section id="warranty" className="relative py-24 sm:py-32 overflow-hidden">
         <div className="absolute inset-0 mesh-gradient-dark" />
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-ecolus-500/20 to-transparent" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-ecolus-500/3 blur-[150px]" />
@@ -263,7 +263,7 @@ export default function Services() {
                 <p className="text-white/50 mb-8 leading-relaxed text-sm sm:text-base">
                   Every Ecolus Energy installation comes with comprehensive warranty coverage that protects your investment for decades.
                 </p>
-                <Link to="/contact" className="group inline-flex items-center gap-2 px-7 py-3.5 bg-ecolus-500 hover:bg-ecolus-400 rounded-2xl text-white font-bold text-sm transition-all hover:shadow-xl hover:shadow-ecolus-500/20">
+                <Link to="/energy/contact" className="group inline-flex items-center gap-2 px-7 py-3.5 bg-ecolus-500 hover:bg-ecolus-400 rounded-2xl text-white font-bold text-sm transition-all hover:shadow-xl hover:shadow-ecolus-500/20">
                   <Phone className="w-4 h-4" />
                   Discuss Your Project
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -384,7 +384,7 @@ function ServiceBlock({ service, index }) {
               {service.features.map((f) => (
                 <div key={f} className="flex items-center gap-2.5 group/feat">
                   <CheckCircle2 className="w-4 h-4 text-ecolus-400 flex-shrink-0 group-hover/feat:text-lime-accent transition-colors" />
-                  <span className="text-white/55 text-sm">{f}</span>
+                  <span className="text-white/50 text-sm">{f}</span>
                 </div>
               ))}
             </div>
@@ -400,10 +400,10 @@ function ServiceBlock({ service, index }) {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="group flex items-center gap-2 px-7 py-3.5 bg-ecolus-500 hover:bg-ecolus-400 rounded-2xl text-white font-bold text-sm transition-all hover:shadow-xl hover:shadow-ecolus-500/20">
+              <Link to="/energy/contact" className="group flex items-center gap-2 px-7 py-3.5 bg-ecolus-500 hover:bg-ecolus-400 rounded-2xl text-white font-bold text-sm transition-all hover:shadow-xl hover:shadow-ecolus-500/20">
                 Get a Quote <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to={`/services/${service.slug}`} className="group flex items-center gap-2 px-7 py-3.5 glass hover:glass-green rounded-2xl text-white/70 font-semibold text-sm transition-all">
+              <Link to={`/energy/services/${service.slug}`} className="group flex items-center gap-2 px-7 py-3.5 glass hover:glass-green rounded-2xl text-white/70 font-semibold text-sm transition-all">
                 Learn More <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
             </div>

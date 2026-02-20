@@ -226,7 +226,7 @@ function HeroSection() {
               transition={{ delay: 0.4, duration: 0.6 }}
             >
               <Link
-                to="/contact"
+                to="/energy/contact"
                 className="group inline-flex items-center gap-3 text-white text-sm font-bold tracking-wider uppercase hover:text-lime-accent transition-colors"
               >
                 <span className="relative">
@@ -391,7 +391,7 @@ function ServicesSection() {
           </AnimatedSection>
           <AnimatedSection delay={0.2} className="mt-6 lg:mt-0">
             <Link
-              to="/services"
+              to="/energy/services"
               className="group inline-flex items-center gap-2 text-ecolus-400 text-sm font-semibold hover:text-lime-accent transition-colors"
             >
               View all services
@@ -857,7 +857,7 @@ function CTASection() {
           <AnimatedSection delay={0.3}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                to="/contact"
+                to="/energy/contact"
                 className="group flex items-center justify-center gap-3 px-8 py-4 bg-ecolus-500 hover:bg-ecolus-400 text-white font-bold rounded-2xl transition-all hover:shadow-xl hover:shadow-ecolus-500/20 text-sm sm:text-base w-full sm:w-auto"
               >
                 Get Your Free Quote

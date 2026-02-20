@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(dir:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "WebSearch",
+      "WebFetch(domain:www.gm.com)",
+      "WebFetch(domain:www.chevrolet.com)",
+      "WebFetch(domain:www.cadillac.com)",
+      "WebFetch(domain:us.sunpower.com)",
+      "Bash(find:*)"
     ]
   }
 }

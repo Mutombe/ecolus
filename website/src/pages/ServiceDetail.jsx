@@ -18,7 +18,7 @@ export default function ServiceDetail() {
     window.scrollTo(0, 0);
   }, [slug]);
 
-  if (!service) return <Navigate to="/services" replace />;
+  if (!service) return <Navigate to="/energy/services" replace />;
 
   const currentIdx = servicesData.indexOf(service);
   const nextService = servicesData[(currentIdx + 1) % servicesData.length];
@@ -71,9 +71,9 @@ export default function ServiceDetail() {
             transition={{ delay: 0.2 }}
             className="flex items-center gap-2 text-xs text-white/30 font-[family-name:var(--font-mono)] mb-8"
           >
-            <Link to="/" className="hover:text-white/50 transition-colors">Home</Link>
+            <Link to="/energy" className="hover:text-white/50 transition-colors">Home</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link to="/services" className="hover:text-white/50 transition-colors">Services</Link>
+            <Link to="/energy/services" className="hover:text-white/50 transition-colors">Services</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-ecolus-400">{service.shortTitle}</span>
           </motion.nav>
@@ -111,7 +111,7 @@ export default function ServiceDetail() {
             </motion.p>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} className="flex flex-wrap gap-4">
-              <Link to="/contact" className="group flex items-center gap-3 px-8 py-4 bg-ecolus-500 hover:bg-ecolus-400 text-white font-bold rounded-2xl transition-all hover:shadow-xl hover:shadow-ecolus-500/20 text-sm">
+              <Link to="/energy/contact" className="group flex items-center gap-3 px-8 py-4 bg-ecolus-500 hover:bg-ecolus-400 text-white font-bold rounded-2xl transition-all hover:shadow-xl hover:shadow-ecolus-500/20 text-sm">
                 Get a Free Quote
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -214,7 +214,7 @@ export default function ServiceDetail() {
                   <div className="relative">
                     <h3 className="text-white font-bold font-[family-name:var(--font-display)] text-lg mb-3">Ready to Get Started?</h3>
                     <p className="text-white/40 text-sm mb-5">Get a free site assessment and customised quote within 48 hours.</p>
-                    <Link to="/contact" className="group flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-ecolus-500 hover:bg-ecolus-400 rounded-2xl text-white font-bold text-sm transition-all">
+                    <Link to="/energy/contact" className="group flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-ecolus-500 hover:bg-ecolus-400 rounded-2xl text-white font-bold text-sm transition-all">
                       Request Free Assessment
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
@@ -296,7 +296,7 @@ export default function ServiceDetail() {
               Contact us for a free consultation and customised proposal. Our team will assess your needs and design the perfect system for your property.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/contact" className="group flex items-center justify-center gap-3 px-8 py-4 bg-ecolus-500 hover:bg-ecolus-400 text-white font-bold rounded-2xl transition-all hover:shadow-xl hover:shadow-ecolus-500/20 text-sm w-full sm:w-auto">
+              <Link to="/energy/contact" className="group flex items-center justify-center gap-3 px-8 py-4 bg-ecolus-500 hover:bg-ecolus-400 text-white font-bold rounded-2xl transition-all hover:shadow-xl hover:shadow-ecolus-500/20 text-sm w-full sm:w-auto">
                 Get Your Free Quote
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -317,7 +317,7 @@ export default function ServiceDetail() {
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-4">
             {/* Previous */}
-            <Link to={`/services/${prevService.slug}`} className="group flex items-center gap-4 p-5 sm:p-6 rounded-2xl glass hover:glass-green transition-all duration-300">
+            <Link to={`/energy/services/${prevService.slug}`} className="group flex items-center gap-4 p-5 sm:p-6 rounded-2xl glass hover:glass-green transition-all duration-300">
               <ArrowLeft className="w-5 h-5 text-ecolus-400 group-hover:text-lime-accent group-hover:-translate-x-1 transition-all flex-shrink-0" />
               <div>
                 <p className="text-white/30 text-xs font-[family-name:var(--font-mono)] uppercase tracking-wider mb-0.5">Previous</p>
@@ -326,7 +326,7 @@ export default function ServiceDetail() {
             </Link>
 
             {/* Next */}
-            <Link to={`/services/${nextService.slug}`} className="group flex items-center justify-end gap-4 p-5 sm:p-6 rounded-2xl glass hover:glass-green transition-all duration-300 text-right">
+            <Link to={`/energy/services/${nextService.slug}`} className="group flex items-center justify-end gap-4 p-5 sm:p-6 rounded-2xl glass hover:glass-green transition-all duration-300 text-right">
               <div>
                 <p className="text-white/30 text-xs font-[family-name:var(--font-mono)] uppercase tracking-wider mb-0.5">Next</p>
                 <p className="text-white font-bold font-[family-name:var(--font-display)] text-sm sm:text-base">{nextService.shortTitle}</p>

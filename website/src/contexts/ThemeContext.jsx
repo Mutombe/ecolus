@@ -1,14 +1,14 @@
 import React from 'react';
 import { createContext, useContext, useState, useEffect } from 'react';
 
-const ThemeContext = createContext({ theme: 'dark', isDark: true, toggleTheme: () => {} });
+const ThemeContext = createContext({ theme: 'light', isDark: false, toggleTheme: () => {} });
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('ecolus-theme') || 'dark';
+      return localStorage.getItem('ecolus-theme') || 'light';
     }
-    return 'dark';
+    return 'light';
   });
 
   useEffect(() => {

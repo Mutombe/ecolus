@@ -134,14 +134,14 @@ export default function About() {
                 className="flex flex-wrap gap-4 mb-12"
               >
                 <Link
-                  to="/contact"
+                  to="/energy/contact"
                   className="group flex items-center gap-3 px-7 py-3.5 bg-ecolus-500 hover:bg-ecolus-400 text-white font-bold rounded-2xl transition-all hover:shadow-xl hover:shadow-ecolus-500/20 text-sm"
                 >
                   Start Your Journey
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
-                  to="/gallery"
+                  to="/energy/gallery"
                   className="group flex items-center gap-3 px-7 py-3.5 glass hover:glass-green text-white/80 font-semibold rounded-2xl transition-all text-sm"
                 >
                   <Play className="w-4 h-4 text-ecolus-400" />
@@ -245,7 +245,7 @@ export default function About() {
                     <Target className="w-7 h-7 text-ecolus-400" />
                   </div>
                   <h3 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl font-bold text-white mb-4">Our Mission</h3>
-                  <p className="text-white/55 leading-relaxed text-sm sm:text-base">
+                  <p className="text-white/50 leading-relaxed text-sm sm:text-base">
                     To accelerate Zimbabwe's transition to clean energy by providing accessible, reliable, and
                     premium solar solutions that empower communities and protect our environment for future generations.
                   </p>
@@ -270,7 +270,7 @@ export default function About() {
                     <Eye className="w-7 h-7 text-lime-accent" />
                   </div>
                   <h3 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl font-bold text-white mb-4">Our Vision</h3>
-                  <p className="text-white/55 leading-relaxed text-sm sm:text-base">
+                  <p className="text-white/50 leading-relaxed text-sm sm:text-base">
                     To be Southern Africa's most trusted solar energy partner — recognized for engineering excellence,
                     unmatched service quality, and creating lasting impact in every community we serve.
                   </p>
@@ -443,7 +443,7 @@ export default function About() {
               </p>
             </AnimatedSection>
             <AnimatedSection delay={0.2} className="mt-4 lg:mt-0">
-              <Link to="/careers" className="group inline-flex items-center gap-2 text-ecolus-400 text-sm font-semibold hover:text-lime-accent transition-colors">
+              <Link to="/energy/careers" className="group inline-flex items-center gap-2 text-ecolus-400 text-sm font-semibold hover:text-lime-accent transition-colors">
                 Join our team
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
@@ -517,7 +517,7 @@ export default function About() {
           <AnimatedSection delay={0.4} className="text-center mt-12">
             <p className="text-white/40 text-sm mb-4">Still have questions?</p>
             <Link
-              to="/contact"
+              to="/energy/contact"
               className="group inline-flex items-center gap-3 px-7 py-3.5 bg-ecolus-500 hover:bg-ecolus-400 text-white font-bold rounded-2xl transition-all hover:shadow-xl hover:shadow-ecolus-500/20 text-sm"
             >
               <Phone className="w-4 h-4" />
