@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ArrowUpRight } from 'lucide-react';
 
-export default function NavDropdown({ item, isActive }) {
+export default function NavDropdown({ item, isActive, isScrolled, isDark }) {
   const [isOpen, setIsOpen] = useState(false);
   const enterTimer = useRef(null);
   const leaveTimer = useRef(null);
@@ -82,7 +82,13 @@ export default function NavDropdown({ item, isActive }) {
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="absolute top-full left-0 pt-2 z-50"
           >
-            <div className="glass min-w-[320px] rounded-2xl shadow-2xl border border-white/5 overflow-hidden py-2">
+            <div className={`min-w-[320px] rounded-2xl shadow-2xl border overflow-hidden py-2 backdrop-blur-xl ${
+              isScrolled
+                ? isDark
+                  ? 'bg-obsidian/95 border-white/10'
+                  : 'bg-white/95 border-black/10 shadow-lg'
+                : 'glass border-white/5'
+            }`}>
               {item.children.map((child) => (
                 <Link
                   key={child.name}

@@ -253,7 +253,7 @@ export default function Navbar() {
               <nav className="hidden lg:flex items-center gap-1">
                 {currentNavLinks.map((link) =>
                   link.children ? (
-                    <NavDropdown key={link.name} item={link} isActive={isDropdownActive(link)} />
+                    <NavDropdown key={link.name} item={link} isActive={isDropdownActive(link)} isScrolled={isScrolled} isDark={isDark} />
                   ) : (
                     <Link
                       key={link.path}
