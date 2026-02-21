@@ -40,7 +40,7 @@ function HeroSection() {
       accentWord: 'GY',
       blendWord: 'SOLAR',
       desc: 'Transform your home with premium solar panel installations engineered for decades of clean, reliable power across Zimbabwe.',
-      image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1400&q=80',
+      image: '/Ecolus9.jpg',
       blendImage: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=80',
     },
     {
@@ -58,7 +58,7 @@ function HeroSection() {
       accentWord: 'ER',
       blendWord: 'PUMPS',
       desc: 'Solar-powered borehole and irrigation pumps delivering 100% off-grid water supply for farms and rural communities.',
-      image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1400&q=80',
+      image: '/34.jpg',
       blendImage: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1200&q=80',
     },
   ];
@@ -336,7 +336,7 @@ function ServicesSection() {
       icon: Sun,
       title: 'Solar Installations',
       desc: 'Complete residential and commercial solar panel systems designed for maximum energy harvest.',
-      image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=600&q=80',
+      image: '/Ecolus9.jpg',
       stats: '500+ installed',
       link: '/services#solar-installations',
       accent: 'from-ecolus-400/80 to-emerald-600/80',

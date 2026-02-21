@@ -28,9 +28,9 @@ export default function About() {
   ];
 
   const team = [
-    { name: 'Engineering Team', role: 'Solar System Design & Assessment', desc: 'Certified engineers with expertise in photovoltaic system design, structural analysis, and energy modeling.', image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80' },
-    { name: 'Installation Crew', role: 'On-Site Solar Installation', desc: 'Highly trained technicians who ensure every panel is perfectly placed for maximum energy generation.', image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80' },
-    { name: 'Client Success', role: 'Sales & After-Sales Support', desc: 'Dedicated consultants who guide you from initial inquiry through system monitoring and maintenance.', image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80' },
+    { name: 'Engineering Team', role: 'Solar System Design & Assessment', desc: 'Certified engineers with expertise in photovoltaic system design, structural analysis, and energy modeling.', image: '/DSC_2340.jpg' },
+    { name: 'Installation Crew', role: 'On-Site Solar Installation', desc: 'Highly trained technicians who ensure every panel is perfectly placed for maximum energy generation.', image: '/Ecolus138.JPG' },
+    { name: 'Client Success', role: 'Sales & After-Sales Support', desc: 'Dedicated consultants who guide you from initial inquiry through system monitoring and maintenance.', image: '/Ecolus1.jpg' },
   ];
 
   const faqs = [
