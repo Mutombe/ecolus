@@ -12,19 +12,20 @@ import { seoConfig, companyInfo } from '../utils/seoConfig';
 
 export default function About() {
   const values = [
-    { icon: Shield, title: 'Integrity', desc: 'Transparent pricing, honest assessments, and ethical business practices in every interaction.', accent: 'from-ecolus-500 to-emerald-600' },
-    { icon: Award, title: 'Excellence', desc: 'Only the finest solar products and installation standards that exceed industry benchmarks.', accent: 'from-lime-500 to-ecolus-500' },
-    { icon: Heart, title: 'Customer First', desc: 'Your energy needs drive everything we do — from design through lifetime support.', accent: 'from-emerald-500 to-teal-500' },
-    { icon: Globe, title: 'Sustainability', desc: 'Committed to building a greener Zimbabwe, one rooftop at a time.', accent: 'from-teal-500 to-ecolus-500' },
+    { icon: Shield, title: 'Absolute Integrity', desc: 'Transparent pricing, honest assessments, and ethical business practices in every interaction.', accent: 'from-ecolus-500 to-emerald-600' },
+    { icon: Sparkles, title: 'Innovation', desc: 'Embracing cutting-edge solar technology and techniques to deliver the best energy solutions.', accent: 'from-lime-500 to-ecolus-500' },
+    { icon: Heart, title: 'Customer Education', desc: 'Empowering our clients with knowledge to make informed decisions about their energy future.', accent: 'from-emerald-500 to-teal-500' },
+    { icon: Award, title: 'Professionalism', desc: 'Experienced engineers and skilled technicians delivering quality installations every time.', accent: 'from-teal-500 to-ecolus-500' },
+    { icon: Users, title: 'Teamwork', desc: 'A creative, experienced, and highly skilled engineering team working together for your success.', accent: 'from-ecolus-400 to-lime-500' },
   ];
 
   const milestones = [
-    { year: '2017', title: 'Founded in Harare', desc: 'Ecolus Energy launched with a mission to make solar accessible across Zimbabwe.', icon: Building2 },
-    { year: '2018', title: 'First 50 Installations', desc: 'Achieved our first major milestone with residential and small commercial projects.', icon: Sun },
-    { year: '2020', title: 'Commercial Expansion', desc: 'Expanded into large-scale commercial and agricultural solar installations.', icon: Zap },
+    { year: '2020', title: 'Founded in Harare', desc: 'Ecolus Energy (Pvt) Ltd launched with a drive to transform the energy industry in Zimbabwe.', icon: Building2 },
+    { year: '2021', title: 'First 50 Installations', desc: 'Achieved our first major milestone with residential and small commercial projects.', icon: Sun },
     { year: '2022', title: 'Showroom Launch', desc: 'Opened our showroom at 218 Samora Machel Ave, Harare for walk-in consultations.', icon: MapPin },
+    { year: '2023', title: 'Commercial Expansion', desc: 'Expanded into large-scale commercial, agricultural, and utility-scale solar installations.', icon: Zap },
     { year: '2024', title: '500+ Projects', desc: 'Surpassed 500 successful solar installations serving 1,200+ satisfied clients.', icon: Award },
-    { year: '2025', title: 'Regional Growth', desc: 'Expanding services across Southern Africa with new partnerships and technology.', icon: Globe },
+    { year: '2025', title: 'Regional Growth', desc: 'Expanding services across Sub-Saharan Africa with new partnerships and technology.', icon: Globe },
   ];
 
   const team = [
@@ -122,9 +123,9 @@ export default function About() {
                 transition={{ delay: 0.5 }}
                 className="text-white/45 text-base sm:text-lg leading-relaxed max-w-lg mb-10"
               >
-                Since 2017, Ecolus Energy has been at the forefront of Zimbabwe's solar revolution —
-                delivering reliable, affordable, and world-class solar solutions to homes, businesses,
-                and farms across the nation.
+                Since 2020, Ecolus Energy (Pvt) Ltd has been transforming the energy industry — providing cost-effective
+                and environmentally friendly power generation solutions to homes, businesses,
+                and farms across Zimbabwe and beyond.
               </motion.p>
 
               <motion.div
@@ -157,7 +158,7 @@ export default function About() {
                 className="flex items-center gap-8 sm:gap-10 pt-8 border-t border-white/10"
               >
                 {[
-                  { val: '8+', label: 'Years' },
+                  { val: '5+', label: 'Years' },
                   { val: '500+', label: 'Projects' },
                   { val: '1200+', label: 'Clients' },
                   { val: '4.9', label: 'Rating' },
@@ -246,8 +247,8 @@ export default function About() {
                   </div>
                   <h3 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl font-bold text-white mb-4">Our Mission</h3>
                   <p className="text-white/50 leading-relaxed text-sm sm:text-base">
-                    To accelerate Zimbabwe's transition to clean energy by providing accessible, reliable, and
-                    premium solar solutions that empower communities and protect our environment for future generations.
+                    To give the citizens of Zimbabwe and Sub-Saharan Africa access to renewable energy
+                    at a reasonable cost through quality installations and well-researched market knowledge.
                   </p>
                   <div className="w-10 h-0.5 bg-lime-accent/40 mt-8 group-hover:w-20 transition-all duration-500" />
                 </div>
@@ -271,8 +272,8 @@ export default function About() {
                   </div>
                   <h3 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl font-bold text-white mb-4">Our Vision</h3>
                   <p className="text-white/50 leading-relaxed text-sm sm:text-base">
-                    To be Southern Africa's most trusted solar energy partner — recognized for engineering excellence,
-                    unmatched service quality, and creating lasting impact in every community we serve.
+                    To be the chosen company by our stakeholders as their preferred renewable energy
+                    partner in Zimbabwe and beyond our borders.
                   </p>
                   <div className="w-10 h-0.5 bg-ecolus-400/40 mt-8 group-hover:w-20 transition-all duration-500" />
                 </div>
@@ -316,7 +317,7 @@ export default function About() {
             </p>
           </AnimatedSection>
 
-          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5" staggerDelay={0.1}>
+          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5" staggerDelay={0.1}>
             {values.map((v, i) => (
               <StaggerItem key={i}>
                 <div className="group p-6 sm:p-8 rounded-3xl glass hover:glass-green transition-all duration-500 hover:-translate-y-2 text-center h-full relative overflow-hidden">
