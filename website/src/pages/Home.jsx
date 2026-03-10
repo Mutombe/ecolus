@@ -761,18 +761,15 @@ function TestimonialsSection() {
 /* ───────────────────────── PARTNERS/BRANDS ───────────────────────── */
 function PartnersSection() {
   const brands = [
-    { name: 'Canadian Solar', domain: 'canadiansolar.com' },
-    { name: 'JA Solar', domain: 'jasolar.com' },
-    { name: 'JinKO Solar', domain: 'jinkosolar.com' },
-    { name: 'Trina Solar', domain: 'trinasolar.com' },
-    { name: 'Growatt', domain: 'growatt.com' },
-    { name: 'Victron Energy', domain: 'victronenergy.com' },
-    { name: 'Huawei', domain: 'huawei.com' },
-    { name: 'Phocos', domain: 'phocos.com' },
-    { name: 'Fronius', domain: 'fronius.com' },
-    { name: 'Pylontech', domain: 'pylontech.com' },
-    { name: 'SunPower', domain: 'sunpower.com' },
-    { name: 'Bosch', domain: 'bosch.com' },
+    { name: 'Canadian Solar', logo: '/logos/canadian-solar.png' },
+    { name: 'JA Solar', logo: '/logos/ja-solar.png' },
+    { name: 'JinKO Solar', logo: '/logos/jinko-solar.png' },
+    { name: 'LONGi', logo: '/logos/longi.svg' },
+    { name: 'Huawei', logo: '/logos/huawei.svg' },
+    { name: 'Phocos', logo: '/logos/phocos.svg' },
+    { name: 'Fronius', logo: '/logos/Fronius.webp' },
+    { name: 'Pylontech', logo: '/logos/pylontech.svg' },
+    { name: 'SunPower', logo: '/logos/SunPower.svg' },
   ];
 
   return (
@@ -794,15 +791,12 @@ function PartnersSection() {
               className="group flex items-center justify-center w-[100px] h-[50px] sm:w-[120px] sm:h-[56px] rounded-xl glass px-3 py-2 hover:bg-white/5 transition-all"
             >
               <img
-                src={`https://logo.clearbit.com/${brand.domain}?size=80`}
+                src={brand.logo}
                 alt={brand.name}
-                className="max-h-7 sm:max-h-8 max-w-full object-contain brightness-0 invert opacity-30 group-hover:opacity-60 transition-opacity"
+                className="max-h-7 sm:max-h-8 max-w-full object-contain opacity-40 group-hover:opacity-80 transition-opacity"
+                style={{ filter: 'brightness(0) saturate(100%) invert(72%) sepia(67%) saturate(416%) hue-rotate(44deg) brightness(98%) contrast(88%)' }}
                 loading="lazy"
-                onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }}
               />
-              <span className="hidden text-white/30 group-hover:text-white/50 text-xs font-semibold font-[family-name:var(--font-display)] tracking-wider transition-colors text-center">
-                {brand.name}
-              </span>
             </motion.div>
           ))}
         </div>
