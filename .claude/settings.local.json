@@ -8,7 +8,10 @@
       "WebFetch(domain:www.chevrolet.com)",
       "WebFetch(domain:www.cadillac.com)",
       "WebFetch(domain:us.sunpower.com)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(npx vite:*)",
+      "Bash(git status:*)",
+      "Bash(git:*)"
     ]
   }
 }

@@ -354,7 +354,7 @@ function ServicesSection() {
       icon: Droplets,
       title: 'Solar Water Pumps',
       desc: 'Reliable DC & AC pumping solutions for agriculture, boreholes, and irrigation.',
-      image: '/20.webp',
+      image: '/pumps.jpg',
       stats: 'Zero grid needed',
       link: '/services#solar-water-pumps',
       accent: 'from-lime-500/80 to-ecolus-500/80',

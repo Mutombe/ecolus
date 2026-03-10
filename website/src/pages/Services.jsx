@@ -77,7 +77,7 @@ export const servicesData = [
     tagline: 'Zero-grid water pumping for agriculture',
     desc: 'Reliable DC and AC solar-powered water pumping solutions for agriculture, boreholes, and irrigation systems. Zero electricity grid required — harness pure solar power for your water needs.',
     longDesc: 'Our solar water pump systems provide a complete off-grid pumping solution for farms, rural communities, and agricultural operations across Zimbabwe. Using advanced DC and AC pump technology powered directly by solar panels, these systems eliminate the need for grid electricity or diesel generators. We design each system based on your specific water requirements, borehole depth, and daily volume needs.',
-    image: '/33.jpg',
+    image: '/pumps.jpg',
     heroImage: '/20.webp',
     blendImage: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80',
     stats: { value: '100%', label: 'Off-Grid' },
